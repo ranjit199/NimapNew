@@ -1,0 +1,10 @@
+[gui]
+	recentrepo = C:/Users/LENOVO/Nimap Infotech
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = ranjit199
+	email = 145799375+ranjit199@users.noreply.github.com

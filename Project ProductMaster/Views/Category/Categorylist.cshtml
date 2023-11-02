@@ -1,0 +1,25 @@
+﻿@model List<Project_ProductMaster.Models.Category>
+@{
+    ViewBag.Title = "Categorylist";
+}
+
+<h2>Categorylist</h2>
+
+<table class="table table-hover" style="border:initial">
+    <tr>
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="@Url.Action("Category",new {id=item.CategoryId,item.CategoryName,item.CategoryId })" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("Delete",new {id=item.CategoryId})" class="btn btn-danger">Delete</a>
+            </td>
+
+        </tr>
+    }
+</table>

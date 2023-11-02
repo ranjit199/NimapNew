@@ -1,0 +1,42 @@
+﻿@using Project_ProductMaster.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<Product>
+@{
+    ViewBag.Title = "Productlist";
+}
+
+<table class="table table-hover" style="border:initial">
+    <tr>
+        <th>ProductId</th>
+        <th>ProductName</th>
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+        <th>Action</th>
+
+    </tr>
+    @foreach (var item in ViewBag.MyList)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="@Url.Action("Product",new {id=item.ProductId,item.ProductId,item.ProductName,item.CategoryId })" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("Delete",new {id=item.ProductId})" class="btn btn-danger">Delete</a>
+            </td>
+
+        </tr>
+    }
+</table>
+@*@@if (Model.PageNumber != null)
+{*@
+    <div>
+        Page(@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount)
+    </div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+@*@}*@
+

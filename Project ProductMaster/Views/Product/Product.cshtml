@@ -1,0 +1,45 @@
+﻿@model Project_ProductMaster.Models.Product
+@{
+    ViewBag.Title = "Product";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+
+            <label>ProductId</label>
+            @Html.TextBoxFor(a => a.ProductId, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>ProductName</label>
+
+            @Html.ValidationMessageFor(x => x.ProductName, "", new { @class = "error" })
+            @Html.TextBoxFor(a => a.ProductName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            @*@Html.DropDownListFor(model => model.CategoryId, ViewBag.CategoryTbl as SelectList, "--Select Category--", new { @class = "form-control" })*@
+
+
+            @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.CategoryTbl, "-Select Category-", new { @class = "form-control" })
+
+            @*@Html.DropDownListFor(model => model.CategoryId, ViewBag.CategoryTbl as List<SelectListItem>, "--Select Category--", new { @class = "form-control" })*@
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button type="reset" class="btn btn-primary">Reset</button>
+
+        </div>
+    </div>
+}
+
+
